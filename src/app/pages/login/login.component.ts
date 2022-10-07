@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
 
     // TEST ONLY
     this.dataService.setIsLogged(false);
-    this.formLogin.get('username').setValue('oscar.lopez@axity.com');
-    this.formLogin.get('password').setValue('C15c0ax1ty2022');
   }
 
   ngOnInit(): void { }
