@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>{{data.config.name}} Producto</h1>
+<div mat-dialog-content>
+  <mat-progress-bar mode="indeterminate" *ngIf="showLoader"></mat-progress-bar>
+  <div class="container">
+<!--    <mat-form-field style="padding: 2%; width: 95%;">-->
+<!--      <mat-label>Buscar colaborador:</mat-label>-->
+<!--      <input matInput autocomplete="off" type="text" placeholder="Nombre del colaborador..." aria-label="Number"-->
+<!--             [formControl]="autoComplete" (ngModelChange)="newLetter($event)" [(ngModel)]="search"-->
+<!--             [matAutocomplete]="auto">-->
+<!--      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="displayFn($event)">-->
+<!--        <mat-option *ngFor="let option of filteredOptions" [value]="option">-->
+<!--          {{option}}-->
+<!--        </mat-option>-->
+<!--      </mat-autocomplete>-->
+<!--    </mat-form-field>-->
+    <app-search-person (selectedClient)="getClientSelected($event)"
+                       [filteredOptions]="filteredOptions"
+                       [source]="this.data.toSend.tipoMovimiento === 1 ? 'Origen' : 'Destino'">
+    </app-search-person> <br>
+    <div class="row" *ngIf="showForm">
+      <form [formGroup]="formGroup">
+        <mat-form-field class="input-form" appearance="outline">
+          <mat-label>Guia</mat-label>
+          <input matInput type="text" formControlName="guide" placeholder="Guia" autocomplete="off">
+        </mat-form-field> <br>
+        <mat-form-field class="input-form" appearance="outline">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" formControlName="count" placeholder="Cantidad" autocomplete="off" [min]="cantMinP" [max]="cantMaxP">
+        </mat-form-field> <br>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Cancelar</button>
+  <button mat-button (click)="acceptRequest()" [disabled]="!formGroup.valid">Aceptar</button>
+</div>

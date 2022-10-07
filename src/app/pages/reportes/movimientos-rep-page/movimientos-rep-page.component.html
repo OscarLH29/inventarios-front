@@ -1,0 +1,76 @@
+<mat-card class="main-card">
+  <mat-card-header class="header">
+<!--    <mat-icon color="primary" class="icon-filter">filter_list</mat-icon>-->
+    <button mat-raised-button class="btn-export" (click)="exportData()">Exportar <mat-icon>import_export</mat-icon></button>
+    <h2>Movimientos</h2>
+    <input matInput class="input-search" type="text"  placeholder="Buscar" autocomplete="off" (keydown)="typing($event)">
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container" *ngIf="showReport">
+      <div class="row">
+        <div class="col">
+          <ng-container *ngFor="let card of cardsDisplay">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title class="title-card" [style.color]="getStatusColor(card.estatus)">{{card.nombreProducto}} - {{card.estatus}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <small>{{card.id}} &nbsp;</small> {{card.nombreMovimiento}} - {{card.nombreProducto}}, <br>
+                cant. {{card.cantidad}}, Almacen: {{card.nombreAlmacen}} <br>
+                {{card.guia ? 'guia ' + card.guia : '.'}}
+                <div class="actions" *ngIf="card.estatus.toLowerCase() === 'pendiente'">
+                  <button mat-button matTooltip="Aceptar" (click)="showConfirm(2, card)"><mat-icon class="i-accept">check_circle_outline</mat-icon></button>
+                  <button mat-button matTooltip="Rechazar" (click)="showConfirm(3, card)"><mat-icon class="i-cancel">cancel</mat-icon></button>
+                </div>
+                <br> <small class="date-span">{{card.fechaMovimiento}}</small>
+              </mat-card-content>
+            </mat-card> <br>
+          </ng-container>
+        </div>
+        <div class="col col-lg-3">
+<!--          <form [formGroup]="range" (ngSubmit)="onFormSubmit($event)">-->
+<!--            <mat-form-field appearance="outline" class="input-picker">-->
+<!--              <mat-label>Rango de fechas</mat-label>-->
+<!--              <mat-date-range-input [rangePicker]="picker">-->
+<!--                <input matStartDate formControlName="start" placeholder="Inicio">-->
+<!--                <input matEndDate formControlName="end" placeholder="Fin">-->
+<!--              </mat-date-range-input>-->
+<!--              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--              <mat-date-range-picker #picker></mat-date-range-picker>-->
+<!--            </mat-form-field>-->
+<!--          </form>-->
+
+          <button color="primary" mat-button style="float: right" (click)="dateChange()">Aplicar fechas</button>
+          <mat-form-field appearance="outline" class="input-picker">
+            <mat-label>Rango de fechas</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Inicio">
+              <input matEndDate formControlName="end" placeholder="Fin">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+
+
+<!--          <div class="someClass">-->
+<!--            <mat-form-field appearance="outline">-->
+<!--              <mat-label>Label</mat-label>-->
+<!--              <input (dateChange)="dateChange($event, '')" formControlName="formControlName" matInput [matDatepicker]="pickesr">-->
+<!--              <mat-datepicker-toggle matSuffix [for]="pickesr"></mat-datepicker-toggle>-->
+<!--              <mat-datepicker #pickesr></mat-datepicker>-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+
+        </div>
+      </div>
+      <div class="row">
+        <mat-paginator [pageSize]="pageSize" [length]="lengthCards" [pageSizeOptions]="sizeOptions" (page)="changePage($event)" *ngIf="showReport"></mat-paginator>
+      </div> <br>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <br><br><br><br>
+  </mat-card-footer>
+</mat-card>
+

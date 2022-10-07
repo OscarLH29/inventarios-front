@@ -1,0 +1,53 @@
+.back-btn {
+  cursor: pointer;
+  width: 50px;
+  margin: 5px;
+  position: relative;
+  left: 10px;
+}
+
+.back-btn:hover {
+  color: #480e67;
+  font-weight: bold;
+}
+
+.icon-menu {
+  font-size: 21px;
+  padding-top: 10px;
+}
+
+mat-toolbar-row {
+  div {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 65px;
+    width: 33.34%;
+  }
+}
+
+.route-active {
+  background-color: #480e67;
+  color: #fff;
+  border-radius: 1px;
+}
+
+.no-active {
+  background-color: #fff;
+  color: #000;
+  border-radius: 1px;
+}
+
+.title::before {
+  content: '\A';
+  white-space: pre;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 !important;
+}
+
+.header-menu {
+  position: fixed;
+  z-index: 100;
+}

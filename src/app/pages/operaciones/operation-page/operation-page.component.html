@@ -1,0 +1,60 @@
+<mat-card class="main-card">
+  <mat-card-header class="header">
+  </mat-card-header>
+  <mat-card-content>
+    <div class="text-center">
+      <mat-card-title>Operaciones Producto</mat-card-title>
+      <p>Ingresa la información solicitada para dar de alta una operación a tu almacen</p>
+
+      <app-search-person (selectedClient)="getClientSelected($event)"
+                         [filteredOptions]="filteredOptions"
+                         [source]="formGroup.get('movId').value === 1 ? 'Origen' : 'Destino'"
+      ></app-search-person> <br>
+
+      <form [formGroup]="formGroup">
+        <mat-form-field class="input-width" appearance="outline">
+          <mat-label>Producto</mat-label>
+          <mat-select formControlName="product" required [disabled]="!showPage">
+            <mat-option *ngFor="let producto of products" [value]="producto">
+              {{producto.nombreProducto}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> <br>
+
+        <mat-form-field class="input-width" appearance="outline">
+          <mat-label>Tipo Movimiento</mat-label>
+          <mat-select formControlName="movId" required [disabled]="!enabletypeMov">
+            <mat-option *ngFor="let mov of movimientos" [value]="mov.id">
+              {{mov.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> <br>
+
+        <mat-form-field class="input-width" appearance="outline">
+          <mat-label>Guia</mat-label>
+          <input matInput type="text" formControlName="guide" placeholder="Guia" autocomplete="off" [readonly]="!showPage">
+        </mat-form-field> <br>
+
+        <mat-form-field class="input-width" appearance="outline">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="date" [disabled]="!showPage">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field> <br>
+
+        <mat-form-field class="input-width" appearance="outline">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" formControlName="count" placeholder="Cantidad" autocomplete="off" [min]="cantMinP" [max]="cantMaxP" [readonly]="!enableCant">
+        </mat-form-field> <br>
+      </form>
+        <button mat-flat-button color="primary" type="submit" class="input-width" (click)="saveData()" [disabled]="!formGroup.valid">
+          Guardar <mat-icon>save</mat-icon>
+        </button> <br>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <br><br><br><br>
+  </mat-card-footer>
+</mat-card>
+

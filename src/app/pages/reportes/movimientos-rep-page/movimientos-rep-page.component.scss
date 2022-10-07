@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.btn-export {
+  width: 190px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: #9a80b4;
+  color: #fff;
+}
+
+.input-search {
+  border-radius: 18px;
+  border: 1px solid #7f5695;
+  height: 35px;
+  margin-top: 5px;
+  padding: 15px;
+  width: 250px;
+}
+
+.date-span {
+  color: #7f5695;
+  font-weight: bold;
+}
+
+.actions {
+  width: 150px;
+  float: right;
+}
+
+.i-accept:hover {
+  color: #057605;
+  font-weight: bold;
+}
+
+.i-cancel:hover {
+  color: #8d0202;
+  font-weight: bold;
+}
+
+.title-card {
+  font-weight: 500;
+  text-transform: capitalize;
+}

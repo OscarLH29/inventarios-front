@@ -1,0 +1,13 @@
+<mat-toolbar color="#fff">
+  <mat-toolbar-row class="header-menu">
+    <mat-icon *ngIf="isProductIndv()" (click)="backClicked()" class="back-btn">keyboard_backspace</mat-icon>
+    <div *ngFor="let path of routesMenu"
+         [ngClass]="isProductIndv() && path.route === '/inventario' ? 'route-active' : isActive(path.route) ? 'route-active' : 'no-active'"
+         [routerLink]="[path.route]">
+      <button mat-button>
+        <mat-icon class="icon-menu">{{path.icon}}</mat-icon>
+        <span class="title">{{path.name}}</span>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

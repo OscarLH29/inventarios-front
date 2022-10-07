@@ -1,0 +1,33 @@
+<mat-card class="main-card">
+  <mat-card-header class="header">
+    <mat-icon color="primary" class="icon-filter" [matMenuTriggerFor]="menu">filter_list</mat-icon>
+    <mat-menu #menu="matMenu">
+<!--      <input matInput class='filter-in-menu' type="text" placeholder="Buscar" autocomplete="off" (click)="$event.stopPropagation();">-->
+<!--      <button mat-menu-item (click)="$event.stopPropagation();" [matMenuTriggerFor]="tipos">Tipo</button>-->
+      <button mat-menu-item (click)="$event.stopPropagation();" [matMenuTriggerFor]="cantidades">Cantidad</button>
+    </mat-menu>
+<!--    <mat-menu #tipos="matMenu">-->
+<!--    <button mat-menu-item (click)="filterByType('Todos')">Todos</button>-->
+<!--      <ng-container *ngFor="let type of tiposFilter">-->
+<!--        <button mat-menu-item (click)="filterByType(type)">{{type}}</button>-->
+<!--      </ng-container>-->
+<!--    </mat-menu>-->
+    <mat-menu #cantidades="matMenu">
+      <button mat-menu-item (click)="filterByCount('Todos')">Todos</button>
+      <ng-container *ngFor="let count of countFilter">
+        <button mat-menu-item (click)="filterByCount(count)">{{count}}</button>
+      </ng-container>
+    </mat-menu>
+    <button mat-raised-button class="btn-export" (click)="exportData()">Exportar <mat-icon>import_export</mat-icon></button>
+    <h2>Productos</h2>
+  </mat-card-header>
+  <mat-card-content><br>
+    <app-table-product [data]="dataInventories" (reloadData)="reloadData($event)" *ngIf="showTable"></app-table-product>
+    <div class="guide">
+      <app-guide-table></app-guide-table>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <br><br>
+  </mat-card-footer>
+</mat-card>

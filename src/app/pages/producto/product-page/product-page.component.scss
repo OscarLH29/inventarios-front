@@ -1,0 +1,38 @@
+.img-product {
+  font-size: 12em;
+  position: relative;
+  margin: auto;
+  right: 4.5rem;
+  bottom: 5rem;
+  color: #6e6e6e;
+}
+
+.div-img {
+  width: 400px;
+  height: 450px;
+  background: #f1f1f1;
+  border-radius: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.card-product {
+  margin: auto;
+  padding: 8% 30px 30px;
+}
+
+.btn-action {
+  width: 200px;
+  height: 45px;
+  margin: 5px 0;
+}
+
+.info-card {
+  margin-top: 4%;
+  margin-left: 10%;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

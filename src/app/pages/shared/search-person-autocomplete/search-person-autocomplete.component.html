@@ -1,0 +1,10 @@
+<mat-form-field class="input-width" appearance="outline">
+  <mat-label>Cliente/Colaborador ({{source}}):</mat-label>
+  <input matInput autocomplete="off" type="text" placeholder="Buscar..." aria-label="Number"
+         [formControl]="autoComplete" [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedClientEvt($event)" [displayWith]="displayName">
+    <mat-option *ngFor="let option of filteredOptions" [value]="option">
+      {{option.nombre}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

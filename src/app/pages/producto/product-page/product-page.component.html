@@ -1,0 +1,44 @@
+<mat-card class="main-card">
+  <mat-card-header class="header">
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container card-product" *ngIf="product; else notProduct">
+      <div class="row">
+<!--        <div class="col div-img">-->
+<!--          <mat-icon class="img-product">stay_current_portrait</mat-icon>-->
+<!--        </div>-->
+        <div class="col info-card">
+          <div class="container">
+            <small class="row capitalize">{{product.productoId}}</small>
+            <h1 class="row capitalize">{{product.nombreProducto}}</h1>
+            <h3 class="row capitalize">{{user.dsName + ' ' + user.dsLastName}}</h3>
+            <p class="row capitalize">estatus: {{product.status | status}}, tipo: {{product.tipo}}</p>
+            <p class="row capitalize">{{product.nombreAlmacen}}</p>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h2>Cant {{product.cantidad}}.</h2>
+              </div>
+              <div class="col">
+                <div class="container" style="padding-left: 0">
+                  <button mat-raised-button color="primary" class="row btn-action" (click)="openDialog(1)">Transferir <mat-icon>import_export</mat-icon></button> <br>
+<!--                  <button mat-raised-button color="primary" class="row btn-action" (click)="openDialog(2)">Devolver <mat-icon>arrow_forward</mat-icon></button> <br>-->
+                  <button mat-raised-button color="primary" class="row btn-action" (click)="openDialog(3)">Aplicar (salida) <mat-icon>exit_to_app</mat-icon></button> <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #notProduct><br>
+      <div class="text-center">
+        Selecciona un producto previamente para poder ver el detalle
+      </div> <hr>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-footer>
+
+  </mat-card-footer>
+</mat-card>

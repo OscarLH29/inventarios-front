@@ -1,0 +1,30 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+}
+
+.loading-bar {
+  position: absolute;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+
+  span {
+    font-size: smaller;
+    font-weight: lighter;
+  }
+
+  mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  height: 100%;
+  width: 10%;
+  padding: 12px 0 12px 0;
+}
+

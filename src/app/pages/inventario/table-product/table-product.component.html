@@ -1,0 +1,87 @@
+<div>
+  <div class="search">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" autocomplete="off" class="input-s">
+  </div>
+      <table mat-table matSort class="mat-table" [dataSource]="dataSource">
+        <!-- id -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">#</mat-icon> <br>
+              <small>ID</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center">{{element.id}}</td>
+        </ng-container>
+        <!-- nombreProducto -->
+        <ng-container matColumnDef="nombreProducto">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">laptop</mat-icon> <br>
+              <small>Producto</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center">{{element.nombreProducto}}</td>
+        </ng-container>
+        <!-- nombreAlmacen -->
+        <ng-container matColumnDef="nombreAlmacen">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">store</mat-icon> <br>
+              <small>Almacén</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center">{{element.nombreAlmacen}}</td>
+        </ng-container>
+        <!-- tipo -->
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">drag_indicator</mat-icon> <br>
+              <small>Tipo</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center">{{element.tipo}}</td>
+        </ng-container>
+        <!-- cantidad -->
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">layers</mat-icon> <br>
+              <small>Cantidad</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center">{{element.cantidad}}</td>
+        </ng-container>
+        <!-- status -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">check_circle_outline</mat-icon> <br>
+              <small>Estado</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element" class="text-center">{{element.status | status}}</td>
+        </ng-container>
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="header-font">
+            <span>
+              <mat-icon class="icon-header">swap_horiz</mat-icon> <br>
+              <small>Acciones</small>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>
+              <span class="link-product" (click)="redirectProduct(element)">Ver Detalle</span>
+              <mat-icon matTooltip="Transferir" class="icon-action" (click)="openDialog(1, element)">import_export</mat-icon>
+<!--              <mat-icon matTooltip="Devolver" class="icon-action" (click)="openDialog(2, element)">arrow_forward</mat-icon>-->
+              <mat-icon matTooltip="Salida" class="icon-action" (click)="openDialog(3, element)">exit_to_app</mat-icon>
+            </p>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="header-extension-table col-sm-2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  <mat-paginator pageSize="15" [pageSizeOptions]="[5, 15, 30, 50]" showFirstLastButtons></mat-paginator>
+</div> <br>

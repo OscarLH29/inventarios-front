@@ -1,0 +1,54 @@
+.header-extension-table {
+  background-color: #480e67;
+}
+
+.header-font {
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+}
+
+.mat-row:nth-child(2n+1) {
+  background-color: #fff;
+}
+
+.mat-row:not(:nth-child(2n+1)) {
+  background-color: #d2bef5;
+}
+
+table.mat-table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.link-product {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.icon-action {
+  margin: 4px;
+  cursor: pointer;
+  color: #5a28ab;
+}
+
+.search {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+}
+
+.input-s {
+  border-radius: 18px;
+  height: 35px;
+  margin-top: 5px;
+  padding: 15px;
+  width: 250px;
+  border: 1px solid #9a80b4;
+}
+
+.icon-header {
+  font-size: 21px
+}
